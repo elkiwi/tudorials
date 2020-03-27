@@ -116,13 +116,14 @@ opening_text = "\nWelcome to Tudor's Crypto Trading Bot. \n \
 def Main():
 
 	exchange = Binance()
-	symbols = exchange.GetTradingSymbols(quoteAssets=["BTC", "USDT", "ETH"])
+	# symbols = exchange.GetTradingSymbols(quoteAssets=["BTC", "USDT", "ETH"])
+	symbols = exchange.GetTradingSymbols(quoteAssets=["BTC"])
 
 	strategy_evaluators = [
-		# StrategyEvaluator(strategy_function=Strategies.bollStrategy),
+		StrategyEvaluator(strategy_function=strategies_dict['bollinger_simple']),
 		# StrategyEvaluator(strategy_function=Strategies.maStrategy),
-		# StrategyEvaluator(strategy_function=Strategies.ichimokuBullish),
-		StrategyEvaluator(strategy_function=strategies_dict['ma_crossover'])
+		# StrategyEvaluator(strategy_function=strategies_dict['ichimoku_bullish']),
+		# StrategyEvaluator(strategy_function=strategies_dict['ma_crossover'])
 	]
 
 	print(opening_text)
